@@ -1,3 +1,4 @@
 <?php
 
-$NAME = "Tairo";
+$NAME  = "Tairo Lima";
+$IDADE = 30;
