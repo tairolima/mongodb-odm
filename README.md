@@ -20,7 +20,8 @@ Versão: 0.0.1
 - aggregate()
 
 #Instalação
-Será necessário instalar o driver de conexão do PHP (7.4) com MongoDB (4.x).
+
+- Será necessário instalar o driver de conexão do PHP (7.4) com MongoDB (4.x).
 
 - https://docs.mongodb.com/drivers/php
 
