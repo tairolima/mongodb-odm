@@ -6,7 +6,7 @@ MongoDB 4.x, utilizando os drivers nativo do PHP 7.4 para MongoDB.
 
 https://www.php.net/manual/en/set.mongodb.php
 
-Versão: 1.0.0
+Versão: 0.0.1
 
 #Métodos
 - find()
