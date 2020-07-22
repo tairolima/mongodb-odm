@@ -5,5 +5,15 @@
     {"name": "Tairo Lima", "email":  "tairo.developer@gmail.com"}
   ],
   "license": "MIT",
-  "keywords": ["odm", "mongodb", "mongodb-odm", "driver", "orm"]
+  "keywords": ["odm", "mongodb", "mongodb-odm", "driver", "orm", "banco de dados", "database"],
+  "autoload": {
+    "psr-4": {
+      "TairoLima\\MongodbODM\\":"src",
+      "TairoLima\\Test\\": "exemplo"
+    }
+  },
+  "require": {
+    "php": ">=7.4",
+    "ext-mongodb": "*"
+  }
 }
