@@ -49,5 +49,9 @@ class RepositoryAdapter
         return $this->mMongo->delete($id);
     }
 
+    public function deleteAll(array $conditions, bool $deleteWithoutParams = false): bool
+    {
+        return $this->mMongo->deleteAll($conditions, $deleteWithoutParams);
+    }
 
 }

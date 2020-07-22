@@ -265,6 +265,30 @@ class CollectionAdapter
         }
     }
 
+    public function deleteAll(array $conditions, bool $deleteWithoutParams = false): bool
+    {
+        try {
+            if ($conditions == [] && $deleteWithoutParams == false)
+            {
+                return false;
+            }
+            
+            $bulk = new BulkWrite();
+            $bulk->delete($conditions);
+
+            $result = $this->mConnection->getManager()->executeBulkWrite($this->getDatabaseCollection(), $bulk);
+
+            if ($result->getDeletedCount() >= 1)
+            {
+                return true;
+            }
+
+            return false;
+
+        }catch (Exception $e){
+            return false;
+        }
+    }
 
 
     private function executeQuery(array $filter, array $options): Cursor
