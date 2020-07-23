@@ -6,6 +6,7 @@ namespace TairoLima\MongodbODM;
 
 use MongoDB\BSON\ObjectId;
 use MongoDB\Driver\BulkWrite;
+use MongoDB\Driver\Command;
 use MongoDB\Driver\Cursor;
 use MongoDB\Driver\Exception\Exception;
 use MongoDB\Driver\Query;
@@ -290,6 +291,81 @@ class CollectionAdapter
         }
     }
 
+    public function count(array $params = []): int
+    {
+        try {
+            $filter  = array();
+            $options = array();
+
+            //filter - conditions
+            $this->filterConditions($filter, $params);
+
+            //options - fields
+            $options["projection"]["_id"] = 1;
+
+            $cursor   = $this->executeQuery($filter, $options);
+            $document = $cursor->toArray();
+
+            return \count($document);
+
+        }catch (Exception $e){
+            return 0;
+        }
+    }
+
+    public function aggregate(array $pipeline, bool $current = false): array
+    {
+        try {
+            $command = [
+                "aggregate" => $this->mCollectionName,
+                "pipeline" => $pipeline,
+                "cursor" => new \stdClass(),
+                "allowDiskUse" => true
+            ];
+
+            $cursor = $this->executeCommand($command);
+
+            if ($current == true)
+            {
+                $document = $cursor->toArray();
+                if (empty($document))
+                {
+                    return [];
+                }
+
+                return current($document);
+            }
+
+            return $cursor->toArray();
+
+        }catch (Exception $e){
+            return [];
+        }
+    }
+
+    public function distinct(string $field, array $params = []): array
+    {
+        $command = [
+            "distinct" => $this->mCollectionName,
+            "key" => $field,
+            "query" => (object) $params
+        ];
+
+        $cursor   = $this->executeCommand($command);
+        $document = current($cursor->toArray());
+
+        return $document["values"];
+    }
+
+
+    private function executeCommand(array $document): Cursor
+    {
+        $command = new Command($document);
+        $cursor  = $this->mConnection->getManager()->executeCommand($this->mConnection->getDatabase(), $command);
+        $cursor->setTypeMap(['root' => 'array', 'document' => 'array', 'array' => 'array']);
+
+        return $cursor;
+    }
 
     private function executeQuery(array $filter, array $options): Cursor
     {

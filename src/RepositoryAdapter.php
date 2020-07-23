@@ -54,4 +54,18 @@ class RepositoryAdapter
         return $this->mMongo->deleteAll($conditions, $deleteWithoutParams);
     }
 
+    public function count(array $params = []): int
+    {
+        return $this->mMongo->count($params);
+    }
+
+    public function aggregate(array $pipeline, bool $current = false): array
+    {
+        return $this->mMongo->aggregate($pipeline, $current);
+    }
+
+    public function distinct(string $field, array $params = []): array
+    {
+        return $this->mMongo->distinct($field, $params);
+    }
 }
