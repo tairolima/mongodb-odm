@@ -1,12 +1,12 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "tairolima/mongodb-odm",
   "description": "ODM (Object Document Mapper) com driver nativo do PHP 7.4 e banco de dados MongoDB 4.x",
   "authors": [
     {"name": "Tairo Lima", "email":  "tairo.developer@gmail.com"}
   ],
   "license": "MIT",
-  "keywords": ["odm", "mongodb", "mongodb-odm", "driver", "orm", "banco de dados", "database"],
+  "keywords": ["odm", "mongodb", "mongodb-odm", "driver", "orm", "banco de dados", "database", "noSQL"],
   "autoload": {
     "psr-4": {
       "TairoLima\\MongodbODM\\":"src",

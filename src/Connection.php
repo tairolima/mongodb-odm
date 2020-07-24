@@ -20,7 +20,7 @@ class Connection
             //Autenticação
             $uri = "mongodb://{user}:{senha}@{host}:{port}/{database}";
          */
-        print_r("\tCONEXAO\n");
+
         $this->database = $database;
         $this->manager  = new Manager($uri);
     }

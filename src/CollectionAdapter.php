@@ -18,7 +18,6 @@ class CollectionAdapter
 
     public function __construct(string $collectionName, Connection $connection)
     {
-        print_r("\t[CollectionAdapter]\n");
         $this->mCollectionName = $collectionName;
         $this->mConnection     = $connection;
     }
@@ -39,42 +38,17 @@ class CollectionAdapter
 
         //filter - conditions
         $this->filterConditions($filter, $params);
-        /*if (isset($params['conditions']))
-        {
-            $filter = $params['conditions'];
-        }*/
 
         //options - limit
         $this->optionsLimit($options, $params);
-        /*if (isset($params['limit']))
-        {
-            $options['limit'] = (int) $params['limit'];
-        }*/
 
         //options - sort
         $this->optionsSort($options, $params);
-        /*if (isset($params['sort']))
-        {
-            $options['sort'] = $params["sort"];
-        }*/
 
         //options - fields
         $this->optionsFields($options, $params);
-        /*$options['projection'] = [];
-        if (isset($params['fields']) && is_array($params['fields']) && !empty($params['fields']))
-        {
-            foreach ($params['fields'] as $key => $value)
-            {
-                $options['projection'][$key] = $value;
-            }
-        }*/
 
         try {
-            /*$query  = new Query($filter, $options);
-            $cursor = $this->mConnection->getManager()->executeQuery($this->getDatabaseCollection(), $query);
-
-            $cursor->setTypeMap(['root' => 'object', 'document' => 'array', 'array' => 'array']);*/
-
             $cursor = $this->executeQuery($filter, $options);
 
             $data = [];
@@ -98,12 +72,7 @@ class CollectionAdapter
             $filter  = array("_id" => new ObjectId($id));
             $options = array();
 
-            $cursor = $this->executeQuery($filter, $options);
-            /*$query  = new Query($filter, $options);
-            $cursor = $this->mConnection->getManager()->executeQuery($this->getDatabaseCollection(), $query);
-
-            $cursor->setTypeMap(['root' => 'object', 'document' => 'array', 'array' => 'array']);*/
-
+            $cursor   = $this->executeQuery($filter, $options);
             $document = current($cursor->toArray());
 
             if ($document != false)

@@ -10,7 +10,6 @@ class RepositoryAdapter
 
     public function __construct(string $collectionName, Connection $connection)
     {
-        print_r("\tRepositoryAdapter\n");
         $this->mMongo = new CollectionAdapter($collectionName, $connection);
     }
 
