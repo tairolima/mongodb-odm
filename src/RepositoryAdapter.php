@@ -13,9 +13,9 @@ class RepositoryAdapter
         $this->mMongo = new CollectionAdapter($collectionName, $connection);
     }
 
-    public function find(array $params = []): array
+    public function find(array $params = [], bool $formatId = true): array
     {
-        return $this->mMongo->find($params);
+        return $this->mMongo->find($params, $formatId);
     }
 
     public function findById(string $id): ?\stdClass

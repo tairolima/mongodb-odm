@@ -31,7 +31,7 @@ class CollectionAdapter
 
     /// Metodos de acesso ao banco de dados MongoDB
 
-    public function find(array $params = []): array
+    public function find(array $params = [], bool $formatId = true): array
     {
         $filter  = array();
         $options = array();
@@ -51,15 +51,23 @@ class CollectionAdapter
         try {
             $cursor = $this->executeQuery($filter, $options);
 
-            $data = [];
-            foreach ($cursor as $document)
+            if ($formatId == true)
             {
-                $document->_id = (string)$document->_id;
+                $data = [];
+                foreach ($cursor as $document)
+                {
+                    if (isset($document->_id))
+                    {
+                        $document->_id = (string)$document->_id;
+                    }
 
-                array_push($data, $document);
+                    array_push($data, $document);
+                }
+
+                return $data;
             }
 
-            return $data;
+            return $cursor->toArray();
 
         } catch (Exception $e) {
             return [];
@@ -345,6 +353,7 @@ class CollectionAdapter
 
         return $cursor;
     }
+
 
     private function filterConditions(array &$filter, array $params)
     {
