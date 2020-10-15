@@ -1,6 +1,6 @@
 # mongodb-odm 
 
-Versão: 1.0.2
+Versão: 1.0.3
 
 ODM (Object Document Mapper) com driver nativo do **PHP 7.4** e banco de dados **MongoDB 4.x**
 
