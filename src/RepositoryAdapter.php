@@ -38,7 +38,7 @@ class RepositoryAdapter
         return $this->mMongo->update($data);
     }
 
-    public function updateAll(array $data, array $conditions): bool
+    public function updateAll(array $data, array $conditions): int
     {
         return $this->mMongo->updateAll($data, $conditions);
     }
@@ -48,7 +48,7 @@ class RepositoryAdapter
         return $this->mMongo->delete($id);
     }
 
-    public function deleteAll(array $conditions, bool $deleteWithoutParams = false): bool
+    public function deleteAll(array $conditions, bool $deleteWithoutParams = false): int
     {
         return $this->mMongo->deleteAll($conditions, $deleteWithoutParams);
     }

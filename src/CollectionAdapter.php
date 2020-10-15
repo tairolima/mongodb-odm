@@ -189,7 +189,7 @@ class CollectionAdapter
         }
     }
 
-    public function updateAll(array $data, array $conditions): bool
+    public function updateAll(array $data, array $conditions): int
     {
         try {
             if (isset($data["_id"]))
@@ -209,10 +209,10 @@ class CollectionAdapter
 
             if ($result->getModifiedCount() >= 1)
             {
-                return true;
+                return $result->getModifiedCount();
             }
 
-            return false;
+            return 0;
 
         }catch (Exception $e){
             return false;
@@ -243,7 +243,7 @@ class CollectionAdapter
         }
     }
 
-    public function deleteAll(array $conditions, bool $deleteWithoutParams = false): bool
+    public function deleteAll(array $conditions, bool $deleteWithoutParams = false): int
     {
         try {
             if ($conditions == [] && $deleteWithoutParams == false)
@@ -258,10 +258,10 @@ class CollectionAdapter
 
             if ($result->getDeletedCount() >= 1)
             {
-                return true;
+                return $result->getDeletedCount();
             }
 
-            return false;
+            return 0;
 
         }catch (Exception $e){
             return false;

@@ -10,17 +10,17 @@ MongoDB 4.x, utilizando os drivers nativo do PHP 7.4 para MongoDB.
 - https://www.php.net/manual/en/set.mongodb.php
  
 #Métodos
-- find()
-- findById()
-- findFirst()
-- create()
-- update()
-- updateAll()
-- delete()
-- deleteAll()
-- count()
-- distinct()
-- aggregate()
+- **find()**: _array_
+- **findById()**: _?stdClass_
+- **findFirst()**: _?stdClass_
+- **create()**: _bool_
+- **update()**: _bool_
+- **updateAll()**: _int_
+- **delete()**: _bool_
+- **deleteAll()**: _int_
+- **count()**: _int_
+- **distinct()**: _array_
+- **aggregate()**: _array_
 
 #Instalação
 
