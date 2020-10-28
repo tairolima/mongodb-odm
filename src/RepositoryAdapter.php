@@ -67,4 +67,19 @@ class RepositoryAdapter
     {
         return $this->mMongo->distinct($field, $params);
     }
+
+    public function isExistData(array $conditions): bool
+    {
+        $data = $this->findFirst([
+            "fields" => ["_id" => 1],
+            "conditions" => $conditions
+        ]);
+
+        if ($data != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
