@@ -107,7 +107,7 @@ class ProdutoRepository extends Repository
 
     public function fakeAdicionarProdutos()
     {
-        for ($i = 1; $i <= 100_000; $i++)
+        for ($i = 1; $i <= 10_000; $i++)
         {
             $produto = [
                 "_id" => MongoObjectID::getId(),
