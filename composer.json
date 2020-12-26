@@ -1,7 +1,7 @@
 {
-  "version": "1.0.5",
+  "version": "2.0.0",
   "name": "tairolima/mongodb-odm",
-  "description": "ODM (Object Document Mapper) com driver nativo do PHP 7.4 e banco de dados MongoDB 4.x",
+  "description": "ODM (Object Document Mapper) com driver nativo do PHP 8.0 e banco de dados MongoDB 4.x",
   "authors": [
     {"name": "Tairo Lima", "email":  "tairo.developer@gmail.com"}
   ],
@@ -14,7 +14,7 @@
     }
   },
   "require": {
-    "php": ">=7.4",
+    "php": ">=8.0",
     "ext-mongodb": "*"
   }
 }

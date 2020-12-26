@@ -8,7 +8,7 @@ use MongoDB\BSON\UTCDateTime;
 
 class DataHora
 {
-    public static function formataDataBrasil($date): string
+    public static function formataDataBrasil(string $date): string
     {
         return date('d/m/Y', strtotime($date));
     }
