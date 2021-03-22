@@ -33,14 +33,14 @@ class RepositoryAdapter
         return $this->mMongo->create($data);
     }
 
-    public function update(array $data): bool
+    public function update(array $data, array $updateOptions = ['multi' => true, 'upsert' => false]): bool
     {
-        return $this->mMongo->update($data);
+        return $this->mMongo->update($data, $updateOptions);
     }
 
-    public function updateAll(array $data, array $conditions): int
+    public function updateAll(array $data, array $conditions, array $updateOptions = ['multi' => true, 'upsert' => false]): int
     {
-        return $this->mMongo->updateAll($data, $conditions);
+        return $this->mMongo->updateAll($data, $conditions, $updateOptions);
     }
 
     public function delete(string $id): bool

@@ -154,7 +154,7 @@ class CollectionAdapter
         }
     }
 
-    public function update(array $data): bool
+    public function update(array $data, array $updateOptions): bool
     {
         try {
             $id = $data["_id"] ?? null;
@@ -172,7 +172,7 @@ class CollectionAdapter
             $bulk->update(
                 ["_id" => $data["_id"] ],
                 ['$set' => $data],
-                ['multi' => false, 'upsert' => false]
+                $updateOptions
             );
 
             $result = $this->mConnection->getManager()->executeBulkWrite($this->getDatabaseCollection(), $bulk);
@@ -189,7 +189,7 @@ class CollectionAdapter
         }
     }
 
-    public function updateAll(array $data, array $conditions): int
+    public function updateAll(array $data, array $conditions, array $updateOptions): int
     {
         try {
             if (isset($data["_id"]))
@@ -202,7 +202,7 @@ class CollectionAdapter
             $bulk->update(
                 $conditions,
                 ['$set' => $data],
-                ['multi' => true, 'upsert' => false]
+                $updateOptions
             );
 
             $result = $this->mConnection->getManager()->executeBulkWrite($this->getDatabaseCollection(), $bulk);
