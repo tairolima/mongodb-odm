@@ -42,6 +42,9 @@ class CollectionAdapter
         //options - limit
         $this->optionsLimit($options, $params);
 
+        //options - skip
+        $this->optionsSkip($options, $params);
+
         //options - sort
         $this->optionsSort($options, $params);
 
@@ -376,6 +379,14 @@ class CollectionAdapter
         if (isset($params['limit']))
         {
             $options['limit'] = (int) $params['limit'];
+        }
+    }
+
+    private function optionsSkip(array &$options, array $params): void
+    {
+        if (isset($params['skip']))
+        {
+            $options['skip'] = (int) $params['skip'];
         }
     }
 
