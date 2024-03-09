@@ -64,7 +64,7 @@ class CollectionAdapter
                         $document->_id = (string)$document->_id;
                     }
 
-                    array_push($data, $document);
+                    $data[] = $document;
                 }
 
                 return $data;

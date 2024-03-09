@@ -1,8 +1,8 @@
 # mongodb-odm 
 
-Versão: 2.0.2
+Versão: 2.1.0
 
-ODM (Object Document Mapper) com driver nativo do **PHP 8.0** e banco de dados **MongoDB 4.x**
+ODM (Object Document Mapper) com driver nativo do **PHP 8.2** e banco de dados **MongoDB 5.x**
 
 Este project foi criado para facilitar (abstrair) acesso ao banco de dados 
 MongoDB 4.x, utilizando os drivers nativo do PHP 8.x para MongoDB.
